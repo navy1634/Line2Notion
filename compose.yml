@@ -1,0 +1,16 @@
+services:
+  line2notion:
+    build:
+      context: ./python
+      dockerfile: Dockerfile
+    image: line2notion-img
+    container_name: line2notion-container
+    working_dir: /app
+    volumes:
+      - ./python:/app
+      - /app/.venv
+    command: bash -c "uv sync"
+
+volumes:
+  line2notion:
+    name: line2notion-vol

@@ -1,0 +1,26 @@
+{
+  "name": "terraform",
+  "build": {
+    "context": ".",
+    "dockerfile": "../../terraform/Dockerfile"
+  },
+  "mounts": [
+    "source=${env:HOME}${env:USERPROFILE}/.aws,target=/root/.aws,type=bind"
+  ],
+  "runArgs": ["--name", "pk-terraform"],
+  "workspaceMount": "source=${localWorkspaceFolder}/terraform,target=/terraform,type=bind,consistency=delegated",
+  "workspaceFolder": "/terraform",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "github.vscode-github-actions",
+        "github.copilot",
+        "github.copilot-chat",
+        "usernamehw.errorlens",
+        "streetsidesoftware.code-spell-checker",
+        "hashicorp.terraform"
+      ]
+    }
+  },
+  "remoteUser": "root"
+}
